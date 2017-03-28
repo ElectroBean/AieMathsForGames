@@ -82,3 +82,20 @@ Vector2 Vector2::Direction()
 
 	return dir;
 }
+
+void Vector2::operator+(const Vector2& a_second) const
+{
+	
+}
+void Vector2::operator-(const Vector2& a_second) const
+{
+
+}
+void Vector2::operator*(const float a_second) const
+{
+
+}
+void Vector2::operator/(const float a_second) const
+{
+
+}

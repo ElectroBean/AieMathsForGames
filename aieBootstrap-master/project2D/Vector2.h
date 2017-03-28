@@ -16,6 +16,11 @@ public:
 	Vector2 Vector2::getNormalized();
 	Vector2 Vector2::Direction();
 
+	void operator+(const Vector2& a_second) const;
+	void operator-(const Vector2& a_second) const;
+	void operator*(const float a_second) const;
+	void operator/(const float a_second) const;
+
 	float x;
 	float y;
 };

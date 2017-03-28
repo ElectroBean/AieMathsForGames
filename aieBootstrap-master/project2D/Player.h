@@ -7,12 +7,17 @@ class Player
 {
 public:
 	Player();
-	Player(Vector2 Position, float shipSpeed, std::string shipTexture);
+	Player(Vector2 Position, float shipSpeed, std::string shipTexture, float shipRotation, float rotateSpeed);
 	~Player();
 	void Update(float deltaTime);
+
+	void ScreenWrap(int a_screenHeight, int a_screenWidth);
 
 	aie::Texture* m_shipTexture;
 	Vector2 m_shipPosition;
 	float m_shipSpeed;
+	float m_shipRotation;
+	float m_rotateSpeed;
+	float m_velocity;
 };
 
