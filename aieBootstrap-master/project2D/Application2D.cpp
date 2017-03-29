@@ -17,6 +17,11 @@ bool Application2D::startup() {
 	m_2dRenderer = new aie::Renderer2D();
 	m_shipFollowerTexture = new aie::Texture("./textures/rock_small.png");
 	m_Player = new Player(Vector2(600, 400), 300.0f, "./textures/ship.png", 0.0f, 5.0f);
+	for (int i = 0; i < 25; i++)
+	{
+		m_Bullets[i] = new Bullets("./textures/bullet.png", 2.5f);
+		m_Bullets[i]->isBulletVisible = true;
+	}
 
 	m_cameraX = 0;
 	m_cameraY = 0;
@@ -41,6 +46,10 @@ void Application2D::update(float deltaTime) {
 	m_timer += deltaTime;
 	m_Player->Update(deltaTime);
 	m_Player->ScreenWrap(getWindowHeight(), getWindowWidth());
+	for (int i = 0; i < 25; i++)
+	{
+		m_Bullets[i]->Update(deltaTime);
+	}
 	
 	Vector2 offset = m_Player->m_shipPosition;
 	offset.Subtract(m_shipFollowerPosition);
@@ -95,6 +104,14 @@ void Application2D::draw() {
 	// ship follower sprite 
 	m_2dRenderer->drawSprite(m_shipFollowerTexture, m_shipFollowerPosition.x, m_shipFollowerPosition.y, 0, 0, 0, 1);
 	
+	for (int i = 0; i < 25; i++)
+	{
+		if (m_Bullets[i]->isBulletVisible)
+		{
+			m_2dRenderer->drawSprite(m_Bullets[i]->m_shipTexture, m_Bullets[i]->m_bulletPosition.x, m_Bullets[i]->m_bulletPosition.y, 0, 0, 0, 1);
+		}
+	}
+
 	// done drawing sprites
 	m_2dRenderer->end();
 }

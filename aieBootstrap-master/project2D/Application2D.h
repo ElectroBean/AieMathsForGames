@@ -5,6 +5,7 @@
 #include "Audio.h"
 #include "Vector2.h"
 #include "Player.h"
+#include "Bullets.h"
 
 class Application2D : public aie::Application {
 public:
@@ -27,6 +28,7 @@ protected:
 	aie::Audio*			m_audio;
 	aie::Texture*		m_shipFollowerTexture;
 	class Player*		m_Player;
+	class Bullets*		m_Bullets[25];
 
 	Vector2* m_shipPosition;
 	float m_shipSpeed;

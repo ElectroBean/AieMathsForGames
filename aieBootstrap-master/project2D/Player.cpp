@@ -19,7 +19,7 @@ Player::Player(Vector2 Position, float shipSpeed, std::string shipTexture, float
 
 Player::~Player()
 {
-	delete m_shipTexture;
+	//delete m_shipTexture;
 }
 
 void Player::Update(float deltaTime)
@@ -63,7 +63,7 @@ void Player::Update(float deltaTime)
 	}
 }
 
-void Player::ScreenWrap(int a_screenHeight, int a_screenWidth)
+void Player::ScreenWrap(float a_screenHeight, float a_screenWidth)
 {
 	if (m_shipPosition.x > a_screenWidth)
 	{

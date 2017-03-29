@@ -11,7 +11,7 @@ public:
 	~Player();
 	void Update(float deltaTime);
 
-	void ScreenWrap(int a_screenHeight, int a_screenWidth);
+	void ScreenWrap(float a_screenHeight, float a_screenWidth);
 
 	aie::Texture* m_shipTexture;
 	Vector2 m_shipPosition;
