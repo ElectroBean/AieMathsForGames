@@ -82,3 +82,17 @@ void Player::ScreenWrap(float a_screenHeight, float a_screenWidth)
 		m_shipPosition.y = a_screenHeight;
 	}
 }
+
+void Player::PlayerShoot(Bullets a_bullets[])
+{
+	for (int i = 0; i < 25; i++)
+	{
+		if (a_bullets[i].isBulletVisible)
+		{
+			continue;
+		}
+		a_bullets[i].isBulletVisible = true;
+
+		a_bullets[i].m_bulletPosition = this->m_shipPosition;
+	}
+}

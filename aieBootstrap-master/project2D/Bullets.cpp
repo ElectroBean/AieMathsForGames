@@ -23,7 +23,6 @@ Bullets::~Bullets()
 
 void Bullets::Update(float deltaTime)
 {
-
 	m_bulletPosition.x -= m_direction.x * m_velocity * deltaTime;
 	m_bulletPosition.y += m_direction.y * m_velocity * deltaTime;
 }

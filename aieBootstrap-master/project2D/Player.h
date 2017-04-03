@@ -12,6 +12,7 @@ public:
 	void Update(float deltaTime);
 
 	void ScreenWrap(float a_screenHeight, float a_screenWidth);
+	void PlayerShoot(Bullets[]);
 
 	aie::Texture* m_shipTexture;
 	Vector2 m_shipPosition;

@@ -66,19 +66,6 @@ void Application2D::update(float deltaTime) {
 	}
 	m_shipFollowerPosition.Add(offset);
 	
-	//Vector2* vecBetween = new Vector2(0, 0);
-	//vecBetween->x = m_Player->m_shipPosition.x - m_shipFollowerPosition->x;
-	//vecBetween->y = m_Player->m_shipPosition.y - m_shipFollowerPosition->y;
-	//
-	//Vector2 dirVec = vecBetween->Direction();
-	//Vector2 direction = dirVec;
-	//dirVec.Multiply(100.0f);
-	//dirVec.Multiply(deltaTime);
-	//
-	//m_shipFollowerPosition->Add(dirVec);
-	//
-	//delete vecBetween;
-
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 	{
@@ -90,20 +77,20 @@ void Application2D::draw() {
 
 	// wipe the screen to the background colour
 	clearScreen();
-	
+
 	// set the camera position before we begin rendering
 	m_2dRenderer->setCameraPos(m_cameraX, m_cameraY);
-	
+
 	// begin drawing sprites
 	m_2dRenderer->begin();
-	
+
 	//player sprite
 	m_2dRenderer->drawSprite(m_Player->m_shipTexture, m_Player->m_shipPosition.x, m_Player->m_shipPosition.y, 0, 0, m_Player->m_shipRotation, 1);
-	
-	
+
+
 	// ship follower sprite 
 	m_2dRenderer->drawSprite(m_shipFollowerTexture, m_shipFollowerPosition.x, m_shipFollowerPosition.y, 0, 0, 0, 1);
-	
+
 	for (int i = 0; i < 25; i++)
 	{
 		if (m_Bullets[i]->isBulletVisible)
