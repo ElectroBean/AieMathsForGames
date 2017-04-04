@@ -2,28 +2,37 @@
 struct Vector2
 {
 public:
+	union {
+		struct {
+			float x;
+			float y;
+		};
+		float data[2];
+	};
+
 	Vector2::Vector2();
 	Vector2::~Vector2();
 	Vector2::Vector2(float x, float y);
-	void Translate(const Vector2& a_second);
-	void Add(const Vector2& a_second);
-	void Subtract(const Vector2& a_second);
-	void Multiply(float a_scalar);
-	void Divide(float a_scalar);
-	float getMagnitude();
-	void normalize();
-	Vector2 Vector2::getNormalized();
-	Vector2 Vector2::Direction();
-	void setRotateRad(float a_angle);
-	void setRotateDeg(float a_angle);
 
-	void operator+(const Vector2& a_second) const;
-	void operator-(const Vector2& a_second) const;
-	void operator*(const float a_second) const;
-	void operator/(const float a_second) const;
+	void Add(const Vector2& a_second);			//addition
+	void Subtract(const Vector2& a_second);		//subtraction
+	void Multiply(float a_scalar);				//multiplication
+	void Divide(float a_scalar);				//division
+	float getMagnitude();						//get the magnitude
+	void normalise();							//normalise void
+	Vector2 Vector2::getNormalised();			//return new normalised vector2
+	Vector2 Vector2::Direction();				//return direction vector
+	void setRotateRad(float a_angle);			//set rotation in radians
+	void setRotateDeg(float a_angle);			//set rotation in degrees
+	float dotProduct(const Vector2& a_second);
 
-protected:
-	float x;
-	float y;
+	explicit operator float*();
+
+	Vector2 operator+(const Vector2& a_second) const; //addition overload
+	Vector2 operator-(const Vector2& a_second) const; //subtraction overload
+	Vector2 operator*(const float a_second) const;    //multiplication overload
+	Vector2 operator/(const float a_second) const;	  //division overload
+	float& operator[](int a_i);						  //return from subscriptoverload
 };
 
+static Vector2 operator*(const float a_fscale, const Vector2& a_RHS);

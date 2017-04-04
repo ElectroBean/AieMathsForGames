@@ -29,33 +29,44 @@ const Vector4 & Vector4::Translate(const Vector4 & a_first, const Vector4 & a_se
 	return Vector4();
 }
 
-const Vector4 & Vector4::Add(const Vector4 & a_first, const Vector4 & a_second)
+void Vector4::Add( const Vector4 & a_second)
 {
-	// TODO: insert return statement here
-	return Vector4();
+	x += a_second.x;
+	y += a_second.y;
+	z += a_second.z;
+	w += a_second.w;
 }
 
-const Vector4 & Vector4::Subtract(const Vector4 & a_first, const Vector4 & a_second)
+void Vector4::Subtract( const Vector4 & a_second)
 {
-	// TODO: insert return statement here
-	return Vector4();
+	x -= a_second.x;
+	y -= a_second.y;
+	z -= a_second.z;
+	w += a_second.w;
 }
 
-const Vector4 & Vector4::Scale(const Vector4 & a_point, float a_scalar)
+void Vector4::Scale( float a_scalar)
 {
-	// TODO: insert return statement here
-	return Vector4();
+	x *= a_scalar;
+	y *= a_scalar;
+	z *= a_scalar;
+	w *= a_scalar;
 }
 
-const Vector4 & Vector4::Multiply(const Vector4 & a_point, float a_scalar)
+void Vector4::Multiply( float a_scalar)
 {
-	// TODO: insert return statement here
-	return Vector4();
+	x *= a_scalar;
+	y *= a_scalar;
+	z *= a_scalar;
+	w *= a_scalar;
 }
 
-const Vector4 & Vector4::Divide(const Vector4 & a_point, float a_scalar)
+void Vector4::Divide( float a_scalar)
 {
-	return Vector4();
+	x /= a_scalar;
+	y /= a_scalar;
+	z /= a_scalar;
+	w /= a_scalar;
 }
 
 float Vector4::getMagnitude()
@@ -66,7 +77,7 @@ float Vector4::getMagnitude()
 void Vector4::normalize()
 {
 	float Length = getMagnitude();
-	*this = Divide(*this, Length);
+	this->Divide(Length);
 }
 
 Vector4 Vector4::getNormalized()
@@ -93,34 +104,46 @@ const Vector4 & Vector4::crossProduct(const Vector4 & a_second)
 	return crossProduct;
 }
 
+void Vector4::setRotateXRad(float a_angle)
+{
+	float cosProduct = cos(a_angle);
+	float sinProduct = sin(a_angle);
+	y = y * cosProduct - z * sinProduct;
+	z = y * sinProduct + z * cosProduct;
+}
+
+void Vector4::setRotateYRad(float a_angle)
+{
+	float cosProduct = cos(a_angle);
+	float sinProduct = sin(a_angle);
+	x = x * cosProduct - z * sinProduct;
+	z = x * sinProduct + z * cosProduct;
+}
+
+void Vector4::setRotateZRad(float a_angle)
+{
+	float cosProduct = cos(a_angle);
+	float sinProduct = sin(a_angle);
+	x = x * cosProduct - y * sinProduct;
+	y = x * sinProduct + y * cosProduct;
+}
+
 void Vector4::operator+(const Vector4 & a_second)
 {
-	x += a_second.x;
-	y += a_second.y;
-	z += a_second.z;
-	w += a_second.w;
+	this->Add(a_second);
 }
 
 void Vector4::operator-(const Vector4 & a_second)
 {
-	x -= a_second.x;
-	y -= a_second.y;
-	z -= a_second.z;
-	w -= a_second.w;
+	this->Subtract(a_second);
 }
 
 void Vector4::operator*(const float a_second)
 {
-	x *= a_second;
-	y *= a_second;
-	z *= a_second;
-	w *= a_second;
+	this->Multiply(a_second);
 }
 
 void Vector4::operator/(const float a_second)
 {
-	x /= a_second;
-	y /= a_second;
-	z /= a_second;
-	w /= a_second;
+	this->Divide(a_second);
 }

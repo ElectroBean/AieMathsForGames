@@ -24,23 +24,17 @@ const Vector3& Vector3::Translate(const Vector3& a_first, const Vector3& a_secon
 
 	return *destination;
 }
-const Vector3& Vector3::Add(const Vector3& a_first, const Vector3& a_second)
+void Vector3::Add(const Vector3& a_second)
 {
-	Vector3* product = new Vector3();
-	product->x = (a_first.x + a_second.x);
-	product->y = (a_first.y + a_second.y);
-	product->z = (a_first.z + a_second.z);
-
-	return *product;
+	x += a_second.x;
+	y += a_second.y;
+	z += a_second.z;
 }
-const Vector3& Vector3::Subtract(const Vector3& a_first, const Vector3& a_second)
+void Vector3::Subtract(const Vector3& a_second)
 {
-	Vector3* product = new Vector3();
-	product->x = (a_first.x - a_second.x);
-	product->y = (a_first.y - a_second.y);
-	product->z = (a_first.z - a_second.z);
-
-	return *product;
+	x -= a_second.x;
+	y -= a_second.y;
+	z -= a_second.z;
 }
 const Vector3& Vector3::Scale(const Vector3& a_point, float a_scalar)
 {
@@ -51,23 +45,17 @@ const Vector3& Vector3::Scale(const Vector3& a_point, float a_scalar)
 
 	return *product;
 }
-const Vector3& Vector3::Multiply(const Vector3& a_point, float a_scalar)
+void Vector3::Multiply(float a_scalar)
 {
-	Vector3* product = new Vector3();
-	product->x = (a_point.x * a_scalar);
-	product->y = (a_point.y * a_scalar);
-	product->z = (a_point.z * a_scalar);
-
-	return *product;
+	x *= a_scalar;
+	y *= a_scalar;
+	z *= a_scalar;
 }
-const Vector3& Vector3::Divide(const Vector3& a_point, float a_scalar)
+void Vector3::Divide(float a_scalar)
 {
-	Vector3* product = new Vector3();
-	product->x = (a_point.x / a_scalar);
-	product->y = (a_point.y / a_scalar);
-	product->z = (a_point.z / a_scalar);
-
-	return *product;
+	x *= a_scalar;
+	y *= a_scalar;
+	z *= a_scalar;
 }
 
 float Vector3::getMagnitude()
@@ -75,17 +63,16 @@ float Vector3::getMagnitude()
 	return sqrt((x * x) + (y * y) + (z * z));
 }
 
-void Vector3::normalize()
+void Vector3::normalise()
 {
 	float Length = getMagnitude();
-
-	*this = Divide(*this, Length);
+	this->Divide(Length);
 }
 
-Vector3 Vector3::getNormalized()
+Vector3 Vector3::getNormalised()
 {
 	Vector3 normalisedVector = *this;
-	normalisedVector.normalize();
+	normalisedVector.normalise();
 	return normalisedVector;
 }
 
@@ -105,45 +92,54 @@ const Vector3 & Vector3::crossProduct(const Vector3 & a_second)
 	return crossProduct;
 }
 
-void Vector3::setRotateX(float a_angle)
+void Vector3::setRotateXRad(float a_angle)
 {
-
+	float cosProduct = cos(a_angle);
+	float sinProduct = sin(a_angle);
+	y = y * cosProduct - z * sinProduct;
+	z = y * sinProduct + z * cosProduct;
 }
 
-void Vector3::setRotateY(float a_angle)
+void Vector3::setRotateYRad(float a_angle)
 {
-
+	float cosProduct = cos(a_angle);
+	float sinProduct = sin(a_angle);
+	x = x * cosProduct - z * sinProduct;
+	z = x * sinProduct + z * cosProduct;
 }
 
-void Vector3::setRotateZ(float a_angle)
+void Vector3::setRotateZRad(float a_angle)
 {
-
+	float cosProduct = cos(a_angle);
+	float sinProduct = sin(a_angle);
+	x = x * cosProduct - y * sinProduct;
+	y = x * sinProduct + y * cosProduct;
 }
 
-void Vector3::operator+(const Vector3 & a_second) 
+Vector3 Vector3::operator+(const Vector3 & a_second)
 {
-	this->x += a_second.x;
-	this->y += a_second.y;
-	this->z += a_second.z;
+	Vector3 Result = *this;
+	Result.Add(a_second);
+	return Result;
 }
 
-void Vector3::operator-(const Vector3 & a_second) 
+Vector3 Vector3::operator-(const Vector3 & a_second)
 {
-	this->x -= a_second.x;
-	this->y -= a_second.y;
-	this->z -= a_second.z;
+	Vector3 Result = *this;
+	Result.Subtract(a_second);
+	return Result;
 }
 
-void Vector3::operator*(const float a_second) 
+Vector3 Vector3::operator*(const float a_second)
 {
-	this->x *= a_second;
-	this->y *= a_second;
-	this->z *= a_second;
+	Vector3 Result = *this;
+	Result.Multiply(a_second);
+	return Result;
 }
 
-void Vector3::operator/(const float a_second) 
+Vector3 Vector3::operator/(const float a_second)
 {
-	this->x /= a_second;
-	this->y /= a_second;
-	this->z /= a_second;
+	Vector3 Result = *this;
+	Result.Divide(a_second);
+	return Result;
 }

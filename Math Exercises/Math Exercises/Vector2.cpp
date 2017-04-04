@@ -17,12 +17,6 @@ Vector2::~Vector2()
 {
 }
 
-void Vector2::Translate(const Vector2 & a_second)
-{
-	x += a_second.x;
-	y += a_second.y;
-}
-
 void Vector2::Add(const Vector2 & a_second)
 {
 	x += a_second.x;
@@ -52,17 +46,19 @@ float Vector2::getMagnitude()
 	return sqrt((x * x) + (y * y));
 }
 
-void Vector2::normalize()
+void Vector2::normalise()
 {
 	float Length = getMagnitude();
-
-	Divide(Length);
+	if (Length != 0)
+	{
+		this->Divide(Length);
+	}
 }
 
-Vector2 Vector2::getNormalized()
+Vector2 Vector2::getNormalised()
 {
 	Vector2 normalisedVector = *this;
-	normalisedVector.normalize();
+	normalisedVector.normalise();
 	return normalisedVector;
 }
 
@@ -109,19 +105,47 @@ void Vector2::setRotateDeg(float a_angle)
 	y = ((oldX * sinResult) + (oldY * cosResult));
 }
 
-void Vector2::operator+(const Vector2& a_second) const
+float Vector2::dotProduct(const Vector2 & a_second)
 {
-
+	return (x * a_second.x + y * a_second.y);
 }
-void Vector2::operator-(const Vector2& a_second) const
-{
 
+Vector2::operator float*()
+{
+	return data;
 }
-void Vector2::operator*(const float a_second) const
-{
 
+Vector2 Vector2::operator+(const Vector2& a_second) const
+{
+	Vector2 Result = *this;
+	Result.Add(a_second);
+	return Result;
 }
-void Vector2::operator/(const float a_second) const
+Vector2 Vector2::operator-(const Vector2& a_second) const
 {
+	Vector2 Result = *this;
+	Result.Subtract(a_second);
+	return Result;
+}
+Vector2 Vector2::operator*(const float a_second) const
+{
+	Vector2 Result = *this;
+	Result.Multiply(a_second);
+	return Result;
+}
+Vector2 Vector2::operator/(const float a_second) const
+{
+	Vector2 Result = *this;
+	Result.Divide(a_second);
+	return Result;
+}
 
+float & Vector2::operator[](int a_i)
+{
+	return data[a_i];
+}
+
+Vector2 operator*(const float a_fscale, const Vector2 & a_RHS)
+{
+	return a_RHS * a_fscale;
 }
