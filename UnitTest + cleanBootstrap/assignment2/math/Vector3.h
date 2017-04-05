@@ -33,6 +33,7 @@ public:
 	Vector3 operator-(const Vector3& a_second) const;
 	Vector3 operator*(const float a_second) const;
 	Vector3 operator/(const float a_second) const;
+	Vector3 operator*(const Vector3& a_second) const;
 	float& operator[](int a_i);
 };
 

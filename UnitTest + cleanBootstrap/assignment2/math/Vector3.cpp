@@ -149,6 +149,15 @@ Vector3 Vector3::operator/(const float a_second) const
 	return Result;
 }
 
+Vector3 Vector3::operator*(const Vector3 & a_second) const
+{
+	Vector3 result;
+	result.x = this->x * a_second.x;
+	result.y = this->y * a_second.y;
+	result.z = this->z * a_second.z;
+	return result;
+}
+
 float & Vector3::operator[](int a_i)
 {
 	return data[a_i];

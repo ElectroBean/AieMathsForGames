@@ -31,18 +31,24 @@ Vector2 Matrix2::operator*(const Vector2 & a_RHS)
 
 Matrix2 Matrix2::operator+(const Matrix2 & a_second)
 {
+	Matrix2 alt;
+	alt = *this;
 	for (int i = 0; i < 4; i++)
 	{
-		data[i] += a_second.data[i];
+		alt.data[i] += a_second.data[i];
 	}
+	return alt;
 }
 
 Matrix2 Matrix2::operator-(const Matrix2 & a_second)
 {
+	Matrix2 alt;
+	alt = *this;
 	for (int i = 0; i < 4; i++)
 	{
-		data[i] -= a_second.data[i];
+		alt.data[i] -= a_second.data[i];
 	}
+	return alt;
 }
 
 Matrix2 Matrix2::operator*(const Matrix2 & a_second)
