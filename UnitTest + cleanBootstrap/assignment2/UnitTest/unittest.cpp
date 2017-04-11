@@ -298,8 +298,8 @@ bool runUnitTests() {
 		v3b = m3b * v3a;
 		v3c = m3c * v3a;
 		v4a = Vector4(13.5f, -48.23f, -54, 1);
-	//	v4b = m4b * v4a;
-	//	v4c = m4c * v4a;
+		//v4b = m4b * v4a;
+		//v4c = m4c * v4a;
 	
 		TEST("Vector3 matrix translation A", v3b, Vector3(68.5f, -4.23f, 1));
 		TEST("Vector3 matrix translation B", v3c, Vector3(86.0490112305f, 83.2981109619f, 1));
@@ -325,8 +325,8 @@ bool runUnitTests() {
 		v3b = m3b * v3a;
 		v3c = m3c * v3a;
 		v4a = Vector4(13.5f, -48.23f, -54, 0);
-	//	v4b = m4b * v4a;
-	//	v4c = m4c * v4a;
+		//v4b = m4b * v4a;
+		//v4c = m4c * v4a;
 	
 		TEST("Vector3 matrix translation C", v3b, Vector3(13.5f, -48.23f, 0));
 		TEST("Vector3 matrix translation D", v3c, Vector3(31.0490131378f, 39.2981109619f, 0));
