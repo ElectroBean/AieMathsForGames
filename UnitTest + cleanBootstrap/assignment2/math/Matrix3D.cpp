@@ -101,12 +101,8 @@ Matrix3::operator float*()
 void Matrix3::setRotateX(const float a_fRotation)
 {
 	m0000 = 1;
-	m0001 = 0;
-	m0010 = 0;
-	m0011 = 0;
 	m0100 = cos(a_fRotation);
 	m0101 = sin(a_fRotation);
-	m0110 = 0;
 	m0111 = -sin(a_fRotation);
 	m1000 = cos(a_fRotation);
 }
@@ -114,13 +110,9 @@ void Matrix3::setRotateX(const float a_fRotation)
 void Matrix3::setRotateY(const float a_fRotation)
 {
 	m0000 = cos(a_fRotation);
-	m0001 = 0;
 	m0010 = -sin(a_fRotation);
-	m0011 = 0;
 	m0100 = 1;
-	m0101 = 0;
 	m0110 = sin(a_fRotation);
-	m0111 = 0;
 	m1000 = cos(a_fRotation);
 }
 
@@ -128,11 +120,7 @@ void Matrix3::setRotateZ(const float a_fRotation)
 {
 	m0000 = cos(a_fRotation);
 	m0001 = sin(a_fRotation);
-	m0010 = 0;
 	m0011 = -sin(a_fRotation);
 	m0100 = cos(a_fRotation);
-	m0101 = 0;
-	m0110 = 0;
-	m0111 = 0;
 	m1000 = 1;
 }

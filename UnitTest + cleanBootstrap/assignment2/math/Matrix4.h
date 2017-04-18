@@ -19,12 +19,13 @@ public:
 		};
 	};
 	Matrix4();
-	Matrix4(float a_pos1, float a_pos2, float a_pos3,
-		float a_pos4, float a_pos5, float a_pos6,
-		float a_pos7, float a_pos8, float a_pos9);
+	Matrix4(float a_pos1, float a_pos2, float a_pos3, float a_pos4, 
+			float a_pos5, float a_pos6,float a_pos7, float a_pos8, 
+			float a_pos9, float a_pos10, float a_pos11, float a_pos12,
+			float a_pos13, float a_pos14, float a_pos15, float a_pos16);
 	~Matrix4();
 
-	Matrix4 operator*(const Vector4& a_RHS);
+	Vector4 operator*(const Vector4& a_RHS);
 	Matrix4 operator+(const Matrix4& a_second);
 	Matrix4 operator-(const Matrix4& a_second);
 	Matrix4 operator*(const Matrix4& a_second);
