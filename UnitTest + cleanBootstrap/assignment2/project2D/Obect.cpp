@@ -28,13 +28,16 @@ Object::~Object()
 void Object::Update(const float deltaTime)
 {
 	aie::Input* input = aie::Input::getInstance();
-	ScreenWrap();
+	if (!parent)
+	{
+		ScreenWrap();
+	}
 
 	if (parent)
 	{
 		*Global = *(parent->Global) * *(Local);
 		Global->columns[2] = Global->columns[2] + (V3Velocity * deltaTime);
-		//Local->columns[2] = parent->Global->columns[2] - Global->columns[2];
+		Local->columns[2] = parent->Global->columns[2] + Vector3(0.1, 0.1, 0);
 	}
 	else
 	{
@@ -46,13 +49,13 @@ void Object::Update(const float deltaTime)
 
 		if (input->isKeyDown(aie::INPUT_KEY_UP))
 		{
-			fSpeed += 100.0f * deltaTime;
+			fSpeed += 300.0f * deltaTime;
 		}
 		if (input->isKeyUp(aie::INPUT_KEY_UP))
 		{
 			if (fSpeed > 0)
 			{
-				fSpeed -= 100.0f * deltaTime;
+				fSpeed -= 200.0f * deltaTime;
 			}
 		}
 		if (input->isKeyDown(aie::INPUT_KEY_LEFT))
@@ -100,11 +103,11 @@ void Object::ScreenWrap()
 		Local->columns[2].x = 1280;
 	}
 	if (Local->columns[2].y > 720)
-	{					  
+	{
 		Local->columns[2].y = 0;
-	}					  
+	}
 	if (Local->columns[2].y < 0)
-	{					  
+	{
 		Local->columns[2].y = 720;
 	}
 }

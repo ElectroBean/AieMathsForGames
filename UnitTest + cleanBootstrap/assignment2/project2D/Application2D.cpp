@@ -29,7 +29,7 @@ bool Application2D::startup() {
 	m_timer = 0;
 
 	NotShip = new Object(Vector3(600, 350, 1), 3.14, m_shipTexture);
-	NotShipChild = new Object(Vector3(10, 10, 1), 3.14, m_bullet);
+	NotShipChild = new Object(Vector3(0, 0, 1), 3.14, m_bullet);
 	NotShipChild->SetParent(NotShip);
 	return true;
 }
