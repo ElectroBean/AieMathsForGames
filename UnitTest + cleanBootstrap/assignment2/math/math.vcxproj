@@ -133,6 +133,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="aabb.cpp" />
     <ClCompile Include="Matrix2D.cpp" />
     <ClCompile Include="Matrix3D.cpp" />
     <ClCompile Include="Matrix4.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="Vector4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="aabb.h" />
     <ClInclude Include="Matrix2D.h" />
     <ClInclude Include="Matrix3D.h" />
     <ClInclude Include="Matrix4.h" />

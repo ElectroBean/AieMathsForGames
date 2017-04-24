@@ -4,6 +4,7 @@
 #include "Renderer2D.h"
 #include "Audio.h"
 #include "Obect.h"
+#include "aabb.h"
 
 class Application2D : public aie::Application {
 public:
@@ -16,6 +17,7 @@ public:
 
 	virtual void update(float deltaTime);
 	virtual void draw();
+	void Application2D::DrawAABB(const aabb& a_aabb, aie::Renderer2D* a_renderer);
 
 protected:
 
@@ -31,4 +33,5 @@ protected:
 
 	Object* NotShip;
 	Object* NotShipChild;
+	Object* NotShipChild2;
 };

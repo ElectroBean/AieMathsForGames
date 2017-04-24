@@ -37,7 +37,31 @@ void Object::Update(const float deltaTime)
 	{
 		*Global = *(parent->Global) * *(Local);
 		Global->columns[2] = Global->columns[2] + (V3Velocity * deltaTime);
-		Local->columns[2] = parent->Global->columns[2] + Vector3(0.1, 0.1, 0);
+		
+
+
+		//if (input->isKeyUp(aie::INPUT_KEY_LEFT_SHIFT))
+		//{
+		//	if (input->isKeyDown(aie::INPUT_KEY_UP))
+		//	{
+		//		fSpeed += 300.0f * deltaTime;
+		//	}
+		//	if (input->isKeyUp(aie::INPUT_KEY_UP))
+		//	{
+		//		if (fSpeed > 0)
+		//		{
+		//			fSpeed -= 400.0f * deltaTime;
+		//		}
+		//	}
+		//	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
+		//	{
+		//		rotation += 2.50f * deltaTime;
+		//	}
+		//	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
+		//	{
+		//		rotation -= 2.50f * deltaTime;
+		//	}
+		//}
 	}
 	else
 	{
@@ -55,7 +79,7 @@ void Object::Update(const float deltaTime)
 		{
 			if (fSpeed > 0)
 			{
-				fSpeed -= 200.0f * deltaTime;
+				fSpeed -= 400.0f * deltaTime;
 			}
 		}
 		if (input->isKeyDown(aie::INPUT_KEY_LEFT))
@@ -71,7 +95,7 @@ void Object::Update(const float deltaTime)
 
 void Object::Draw(aie::Renderer2D * a_Render)
 {
-	a_Render->drawSpriteTransformed3x3(Texture, (float*)Global);
+	a_Render->drawSpriteTransformed3x3(Texture, (float*)Global, 93 / 2, 80 / 2);
 }
 
 void Object::SetSpeed(const float a_speed)
@@ -83,7 +107,7 @@ void Object::SetSpeed(const float a_speed)
 void Object::SetRotation(const float a_rotation)
 {
 	Local->setRotateZ(a_rotation);
-	V3Velocity = fSpeed * Local->columns[1];
+	//V3Velocity = fSpeed * Local->columns[1];
 }
 
 void Object::SetParent(Object * a_parent)
