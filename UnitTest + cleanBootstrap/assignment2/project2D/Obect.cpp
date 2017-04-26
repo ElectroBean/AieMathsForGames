@@ -27,6 +27,11 @@ Object::~Object()
 
 void Object::Update(const float deltaTime)
 {
+	if (fSpeed < 0)
+	{
+		fSpeed = 0;
+	}
+
 	aie::Input* input = aie::Input::getInstance();
 	if (!parent)
 	{
@@ -35,33 +40,33 @@ void Object::Update(const float deltaTime)
 
 	if (parent)
 	{
+		Local->columns[2] = Local->columns[2] + (V3Velocity * deltaTime);
 		*Global = *(parent->Global) * *(Local);
-		Global->columns[2] = Global->columns[2] + (V3Velocity * deltaTime);
+
+		SetRotation(rotation + parent->rotation);
+		SetSpeed(fSpeed);
+		//Global->columns[2] = Global->columns[2] + (V3Velocity * deltaTime);
 		
-
-
-		//if (input->isKeyUp(aie::INPUT_KEY_LEFT_SHIFT))
-		//{
-		//	if (input->isKeyDown(aie::INPUT_KEY_UP))
-		//	{
-		//		fSpeed += 300.0f * deltaTime;
-		//	}
-		//	if (input->isKeyUp(aie::INPUT_KEY_UP))
-		//	{
-		//		if (fSpeed > 0)
-		//		{
-		//			fSpeed -= 400.0f * deltaTime;
-		//		}
-		//	}
-		//	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
-		//	{
-		//		rotation += 2.50f * deltaTime;
-		//	}
-		//	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		//	{
-		//		rotation -= 2.50f * deltaTime;
-		//	}
-		//}
+		if (input->isKeyDown(aie::INPUT_KEY_W))
+		{
+			if(fSpeed < 600.0f)
+			fSpeed += 300.0f * deltaTime;
+		}
+		if (input->isKeyUp(aie::INPUT_KEY_W))
+		{
+			if (fSpeed > 0)
+			{
+				fSpeed -= 400.0f * deltaTime;
+			}
+		}
+		if (input->isKeyDown(aie::INPUT_KEY_A))
+		{
+			rotation += 2.50f * deltaTime;
+		}
+		if (input->isKeyDown(aie::INPUT_KEY_D))
+		{
+			rotation -= 2.50f * deltaTime;
+		}
 	}
 	else
 	{
@@ -73,6 +78,7 @@ void Object::Update(const float deltaTime)
 
 		if (input->isKeyDown(aie::INPUT_KEY_UP))
 		{
+			if(fSpeed <= 5000.0f)
 			fSpeed += 300.0f * deltaTime;
 		}
 		if (input->isKeyUp(aie::INPUT_KEY_UP))

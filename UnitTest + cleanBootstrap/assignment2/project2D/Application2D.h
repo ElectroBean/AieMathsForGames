@@ -19,6 +19,8 @@ public:
 	virtual void draw();
 	void Application2D::DrawAABB(const aabb& a_aabb, aie::Renderer2D* a_renderer);
 
+	void drawAABB(const aabb & aabb, aie::Renderer2D * renderer);
+
 protected:
 
 	aie::Renderer2D*	m_2dRenderer;

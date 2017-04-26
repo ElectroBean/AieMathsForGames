@@ -18,6 +18,7 @@ public:
 	void SetRotation(const float a_rotation);
 	void SetParent(Object* a_parent);
 	void ScreenWrap();
+	float rotation = 0.0f;
 
 private:
 	Object * parent = nullptr;
@@ -26,7 +27,7 @@ private:
 	Matrix3*		Global = nullptr;
 	aie::Texture*	Texture = nullptr;
 	float fSpeed = 0.0f;
-	float rotation = 0.0f;
+	
 	Vector3 V3Direction = Vector3(0.0f, 0.0f, 0.0f);
 	Vector3 V3Velocity = Vector3(0.0f, 0.0f, 0.0f);
 };
