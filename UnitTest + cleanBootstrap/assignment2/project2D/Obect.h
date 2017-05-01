@@ -20,11 +20,11 @@ public:
 	void ScreenWrap();
 	float rotation = 0.0f;
 
+	Matrix3*		Global = nullptr;
 private:
 	Object * parent = nullptr;
 	std::vector<Object>* children = nullptr;
 	Matrix3*		Local = nullptr;
-	Matrix3*		Global = nullptr;
 	aie::Texture*	Texture = nullptr;
 	float fSpeed = 0.0f;
 	

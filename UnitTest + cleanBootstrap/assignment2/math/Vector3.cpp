@@ -163,6 +163,15 @@ float & Vector3::operator[](int a_i)
 	return data[a_i];
 }
 
+Vector3 Vector3::Interpolate(Vector3 lhs, Vector3 rhs, float t)
+{
+	Vector3 result;
+
+	result = lhs + (rhs - lhs) * t;
+
+	return result;
+}
+
 Vector3 operator*(const float a_fscale, const Vector3 & a_RHS)
 {
 	return a_RHS * a_fscale;

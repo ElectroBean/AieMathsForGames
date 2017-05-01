@@ -17,8 +17,6 @@ public:
 
 	virtual void update(float deltaTime);
 	virtual void draw();
-	void Application2D::DrawAABB(const aabb& a_aabb, aie::Renderer2D* a_renderer);
-
 	void drawAABB(const aabb & aabb, aie::Renderer2D * renderer);
 
 protected:
@@ -36,4 +34,7 @@ protected:
 	Object* NotShip;
 	Object* NotShipChild;
 	Object* NotShipChild2;
+
+	aabb*	collision1;
+	aabb*	collision2;
 };

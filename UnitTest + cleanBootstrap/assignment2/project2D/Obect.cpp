@@ -43,7 +43,7 @@ void Object::Update(const float deltaTime)
 		Local->columns[2] = Local->columns[2] + (V3Velocity * deltaTime);
 		*Global = *(parent->Global) * *(Local);
 
-		SetRotation(rotation + parent->rotation);
+		SetRotation(rotation);
 		SetSpeed(fSpeed);
 		//Global->columns[2] = Global->columns[2] + (V3Velocity * deltaTime);
 		
@@ -78,7 +78,7 @@ void Object::Update(const float deltaTime)
 
 		if (input->isKeyDown(aie::INPUT_KEY_UP))
 		{
-			if(fSpeed <= 5000.0f)
+			if(fSpeed <= 1000.0f)
 			fSpeed += 300.0f * deltaTime;
 		}
 		if (input->isKeyUp(aie::INPUT_KEY_UP))
@@ -107,7 +107,8 @@ void Object::Draw(aie::Renderer2D * a_Render)
 void Object::SetSpeed(const float a_speed)
 {
 	fSpeed = a_speed;
-	V3Velocity = fSpeed * Global->columns[1];
+	//                    changed global to local to fix rotation of children
+	V3Velocity = fSpeed * Local->columns[1];
 }
 
 void Object::SetRotation(const float a_rotation)

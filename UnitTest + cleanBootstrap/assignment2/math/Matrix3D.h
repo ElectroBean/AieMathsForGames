@@ -16,6 +16,11 @@ public:
 		struct {
 			Vector3 columns[3];
 		};
+		struct {
+			Vector3 right;
+			Vector3 forward;
+			Vector3 position;
+		};
 	};
 	Matrix3();
 	Matrix3(float a_pos1, float a_pos2, float a_pos3, 

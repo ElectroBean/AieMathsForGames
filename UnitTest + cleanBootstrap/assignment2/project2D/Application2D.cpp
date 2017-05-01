@@ -32,6 +32,9 @@ bool Application2D::startup() {
 	NotShipChild2 = new Object(Vector3(50, -100, 1), 3.14, m_shipTexture);
 	NotShipChild->SetParent(NotShip);
 	NotShipChild2->SetParent(NotShip);
+
+	collision1 = new aabb(10, 10, 40, 40);
+	collision2 = new aabb(50, 50, 40, 40);
 	return true;
 }
 
@@ -45,6 +48,8 @@ void Application2D::shutdown() {
 	delete NotShipChild;
 	delete m_bullet;
 	delete NotShipChild2;
+	delete collision1;
+	delete collision2;
 }
 
 void Application2D::update(float deltaTime) {
@@ -55,6 +60,9 @@ void Application2D::update(float deltaTime) {
 	NotShipChild2->Update(deltaTime);
 	// input example
 	aie::Input* input = aie::Input::getInstance();
+
+	collision1->x = NotShip->Global->position.x;
+	collision1->y = NotShip->Global->position.y;
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
@@ -76,6 +84,8 @@ void Application2D::draw() {
 	NotShip->Draw(m_2dRenderer);
 	NotShipChild->Draw(m_2dRenderer);
 	NotShipChild2->Draw(m_2dRenderer);
+	drawAABB(*collision1, m_2dRenderer);
+	drawAABB(*collision2, m_2dRenderer);
 
 	// output some text, uses the last used colour
 	char fps[32];
@@ -85,11 +95,6 @@ void Application2D::draw() {
 
 	// done drawing sprites
 	m_2dRenderer->end();
-}
-
-void Application2D::DrawAABB(const aabb& a_aabb, aie::Renderer2D* a_renderer)
-{
-
 }
 
 void Application2D::drawAABB(const aabb& aabb, aie::Renderer2D* renderer) {
