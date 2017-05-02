@@ -163,11 +163,11 @@ float & Vector3::operator[](int a_i)
 	return data[a_i];
 }
 
-Vector3 Vector3::Interpolate(Vector3 lhs, Vector3 rhs, float t)
+Vector3 Vector3::Interpolate(Vector3 rhs, float t)
 {
 	Vector3 result;
 
-	result = lhs + (rhs - lhs) * t;
+	result = *this + (rhs - *this) * t;
 
 	return result;
 }

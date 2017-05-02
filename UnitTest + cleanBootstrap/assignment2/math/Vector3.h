@@ -35,7 +35,7 @@ public:
 	Vector3 operator/(const float a_second) const;
 	Vector3 operator*(const Vector3& a_second) const;
 	float& operator[](int a_i);
-	static Vector3 Interpolate(Vector3 lhs, Vector3 rhs, float t);
+	Vector3 Interpolate(Vector3 rhs, float t);
 };
 
 Vector3 operator*(const float a_fscale, const Vector3& a_RHS);

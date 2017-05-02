@@ -67,6 +67,10 @@ void Object::Update(const float deltaTime)
 		{
 			rotation -= 2.50f * deltaTime;
 		}
+		if (input->isKeyDown(aie::INPUT_KEY_S))
+		{
+			Global->position.Interpolate(parent->Global->position, 0);
+		}
 	}
 	else
 	{

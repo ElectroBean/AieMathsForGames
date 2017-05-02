@@ -33,7 +33,7 @@ bool Application2D::startup() {
 	NotShipChild->SetParent(NotShip);
 	NotShipChild2->SetParent(NotShip);
 
-	collision1 = new aabb(10, 10, 40, 40);
+	collision1 = new aabb(10, 10, 25, 25);
 	collision2 = new aabb(50, 50, 40, 40);
 	return true;
 }
@@ -91,7 +91,11 @@ void Application2D::draw() {
 	char fps[32];
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
-	m_2dRenderer->drawText(m_font, "Press Space for sound!", 0, 720 - 64);
+
+	if (collision1->collidesWith(*collision2))
+	{
+		m_2dRenderer->drawText(m_font, "SNAPE KILLS DUMBLEDORE", getWindowWidth() / 3, getWindowHeight() - 100);
+	}
 
 	// done drawing sprites
 	m_2dRenderer->end();
