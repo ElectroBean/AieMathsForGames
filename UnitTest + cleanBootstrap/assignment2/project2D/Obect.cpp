@@ -49,7 +49,7 @@ void Object::Update(const float deltaTime)
 		
 		if (input->isKeyDown(aie::INPUT_KEY_W))
 		{
-			if(fSpeed < 600.0f)
+			if(fSpeed < 900.0f)
 			fSpeed += 300.0f * deltaTime;
 		}
 		if (input->isKeyUp(aie::INPUT_KEY_W))
