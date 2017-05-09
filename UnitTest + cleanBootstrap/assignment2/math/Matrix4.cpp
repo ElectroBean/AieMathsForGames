@@ -4,6 +4,22 @@
 
 Matrix4::Matrix4()
 {
+	m1  =  1;
+	m2  =  0;
+	m3  =  0;
+	m4  =  0;
+	m5  =  0;
+	m6  =  1;
+	m7  =  0;
+	m8  =  0;
+	m9  =  0;
+	m10 =  0;
+	m11 =  1;
+	m12 =  0;
+	m13 =  0;
+	m14 =  0;
+	m15 =  0;
+	m16 =  1;
 }
 
 Matrix4::Matrix4(float a_pos1, float a_pos2, float a_pos3, float a_pos4,
